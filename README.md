@@ -1,9 +1,21 @@
-```markdown
-# Dropbear Static Stealth (For Educational Research)
+# Dropbear Static Slient (For Educational Research)
 
+A minimized,logless，statically-linked Dropbear SSH build which can act as an stealthy ssh backdoor.
 > **⚠️ DISCLAIMER: This tool is strictly for educational purposes and authorized security testing only.**
 > 
 > The author is not responsible for any misuse of this code. Using this tool on systems without explicit permission is illegal and unethical. This project demonstrates how persistence mechanisms work in Linux environments to help Blue Teams improve detection capabilities.
+
+
+
+### 👻 Forensic Evasion (Logless Operation)
+
+This build is explicitly compiled with all logging and accounting features disabled (`--disable-syslog`, `--disable-wtmp`, `--disable-utmp`, etc.). 
+
+**Impact on System Monitoring:**
+* **No Active User List:** The attacker's session will **NOT** appear in the output of standard commands like `who`, `w`, or `users`.
+* **No Login History:** The connection is **NOT** recorded in `/var/log/wtmp` or `/var/log/btmp`, meaning the session will be invisible to the `last` and `lastb` commands.
+* **No Syslog Traces:** Authentication events (successful or failed) are **NOT** written to `/var/log/auth.log` (Debian/Ubuntu) or `/var/log/secure` (RHEL/CentOS).
+* **Result:** A completely silent shell session that leaves no traditional cryptographic or accounting footprint on the host system.
 
 ## usage
 
