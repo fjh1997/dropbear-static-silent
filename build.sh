@@ -1,7 +1,5 @@
 docker run --rm -it \
   --platform=linux/amd64 \
-  -e http_proxy="http://host.docker.internal:10808" \
-  -e https_proxy="http://host.docker.internal:10808" \
   -v "$PWD:/work" \
   alpine:latest \
   sh -c '
