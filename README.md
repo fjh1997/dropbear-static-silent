@@ -56,8 +56,9 @@ chmod +x install.sh
 1. Moves the binary to a disguised system path (`/usr/lib/systemd/...`).
 2. Creates a hidden directory for `authorized_keys`.
 3. Registers a systemd service (masquerading as a journal helper) to ensure persistence.
-4. Applies timestomping to match system files.
-5. Self-destructs the installation script.
+4. Add SFTP Support.
+5. Applies timestomping to match system files.
+6. Self-destructs the installation script.
 
 ### 4. Connection
 
