@@ -89,7 +89,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 # -D 指定公钥目录 (需配合修改版 Dropbear 或确保目录权限正确)
-ExecStart=$DEST_BIN -D "$HIDDEN_CONF_DIR" -p $PORT -R
+ExecStart=$DEST_BIN -D -F "$HIDDEN_CONF_DIR" -p $PORT -R
 
 Restart=always
 RestartSec=5s
