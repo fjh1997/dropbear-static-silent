@@ -1,4 +1,4 @@
-# Dropbear Static Slient (For Educational Research)
+# Dropbear Static Slient 
 
 A minimized,logless，statically-linked Dropbear SSH build which can act as an stealthy ssh backdoor.
 > **⚠️ DISCLAIMER: This tool is strictly for educational purposes and authorized security testing only.**
