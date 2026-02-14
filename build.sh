@@ -20,6 +20,10 @@ docker run --rm -it \
       --disable-wtmpx \
       --disable-loginfunc \
       --disable-pututline \
-      --disable-pututxline &&
+      --disable-pututxline \
+      --disable-zlib \
+      --enable-static\
+      --disable-shadow \
+      &&
     make
   '
