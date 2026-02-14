@@ -1,2 +1,2 @@
 # dropbear-static-silent
-A mini ssh server without log
+A mini portable ssh server without log
